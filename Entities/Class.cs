@@ -3,36 +3,25 @@ namespace ClassAppCS.Entities
 {
     internal class Class
     {
-        public static bool IsPhibonacci(int n)
+        public static void SortArray(int[] arr, bool isAscending)
         {
-            if (n < 0) return false;
-
-            return (IsPerfectSquare(5 * n * n + 4) || IsPerfectSquare(5 * n * n - 4));
-        }
-        private static bool IsPerfectSquare(int x)
-        {
-            int sqrt = (int)Math.Sqrt(x);
-            return sqrt * sqrt == x;
-        }
-        public static bool IsPrime(int n)
-        {
-            if (n <= 1) return false;
-            for (int i = 2; i * i <= n; i++)
+            if (isAscending)
             {
-                if (n % i == 0) return false;
+                Array.Sort(arr); 
+                Console.WriteLine("The array is sorted in ascending order:");
             }
-            return true;
-        }
-
-        public static bool IsPhibonacciAndPrime(int n)
-        {
-
-            if (IsPhibonacci(n) && IsPrime(n))
+            else if (!isAscending)
             {
-                return true;
+                Array.Sort(arr);
+                Array.Reverse(arr); 
+                Console.WriteLine("The array is sorted in descending order:");
             }
-            return false;
 
+            foreach (var item in arr)
+            {
+                Console.Write(item + " ");
+            }
+            Console.WriteLine();
         }
     }
 }

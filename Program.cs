@@ -6,13 +6,28 @@ namespace ClassAppCS
     {
         static void Main(string[] args)
         {
-            int num = 5;
-            bool result = Class.IsPhibonacciAndPrime(num);
-            Console.WriteLine($"Number {num} is a Phibonacci number and prime: {result}");
+            int[] arr = { 3, 1, 4, 1, 5, 9, 2, 6, 5, 3 };
+            Console.WriteLine("Original array:");
+            foreach (var item in arr)
+            {
+                Console.Write(item + " ");
+            }
+            Console.WriteLine();
+            Console.WriteLine("Choose by descending or ascending: ");
+            string choice = Console.ReadLine();
+            if (choice == "ascending")
+            {
+                Class.SortArray(arr, true);
+            }
+            else if (choice == "descending")
+            {
+                Class.SortArray(arr, false);
+            }
+            else
+            {
+                Console.WriteLine("Invalid choice");
+            }
 
-            num = 14;
-            result = Class.IsPhibonacciAndPrime(num);
-            Console.WriteLine($"Number {num} is a Phibonacci number and prime: {result}");
         }
     }
 }
