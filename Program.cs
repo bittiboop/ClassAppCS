@@ -1,4 +1,5 @@
 ﻿using ClassAppCS.Entities;
+using static ClassAppCS.Entities.Class;
 
 namespace ClassAppCS
 {
@@ -6,28 +7,22 @@ namespace ClassAppCS
     {
         static void Main(string[] args)
         {
-            int[] arr = { 3, 1, 4, 1, 5, 9, 2, 6, 5, 3 };
-            Console.WriteLine("Original array:");
-            foreach (var item in arr)
-            {
-                Console.Write(item + " ");
-            }
-            Console.WriteLine();
-            Console.WriteLine("Choose by descending or ascending: ");
-            string choice = Console.ReadLine();
-            if (choice == "ascending")
-            {
-                Class.SortArray(arr, true);
-            }
-            else if (choice == "descending")
-            {
-                Class.SortArray(arr, false);
-            }
-            else
-            {
-                Console.WriteLine("Invalid choice");
-            }
+            var districts = new List<District> { District.Center, District.North, District.South };
+            var city = new City("Kyiv", "Ukraine", 2800000, "+38044", districts);
 
+            city.DisplayInfo();
+
+               
+            city.SetName("Vinnytsia");
+            city.SetPopulation(720000);
+            city.SetPhoneCode("+380432");
+
+            Console.WriteLine("\nUpdated info:");
+            city.DisplayInfo();
+            
+            city.SetDistricts(new List<District> {District.South, District.Center});
+            Console.WriteLine("\nUpdated districts:");
+            city.DisplayInfo();
         }
     }
 }
