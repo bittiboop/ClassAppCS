@@ -1,27 +1,59 @@
 ﻿using ClassAppCS;
+
 namespace ClassAppCS.Entities
 {
     internal class Class
     {
-        public static void SortArray(int[] arr, bool isAscending)
+        public enum District
         {
-            if (isAscending)
+            Center,
+            North,
+            South,
+            East,
+            West
+        }
+
+        public class City
+        {
+            private string name;
+            private string country;
+            private int population;
+            private string phoneCode;
+            private List<District> districts;
+
+            public City(string name, string country, int population, string phoneCode, List<District> districts)
             {
-                Array.Sort(arr); 
-                Console.WriteLine("The array is sorted in ascending order:");
-            }
-            else if (!isAscending)
-            {
-                Array.Sort(arr);
-                Array.Reverse(arr); 
-                Console.WriteLine("The array is sorted in descending order:");
+                this.name = name;
+                this.country = country;
+                this.population = population;
+                this.phoneCode = phoneCode;
+                this.districts = districts ?? new List<District>();
             }
 
-            foreach (var item in arr)
+            public void SetName(string name) => this.name = name;
+            public void SetCountry(string country) => this.country = country;
+            public void SetPopulation(int population) => this.population = population;
+            public void SetPhoneCode(string phoneCode) => this.phoneCode = phoneCode;
+            public void SetDistricts(List<District> districts) => this.districts = districts;
+
+            public string GetName() => name;
+            public string GetCountry() => country;
+            public int GetPopulation() => population;
+            public string GetPhoneCode() => phoneCode;
+            public List<District> GetDistricts() => districts;
+
+            public void DisplayInfo()
             {
-                Console.Write(item + " ");
+                Console.WriteLine($"City: {name}");
+                Console.WriteLine($"Country: {country}");
+                Console.WriteLine($"Population: {population}");
+                Console.WriteLine($"PhCode: {phoneCode}");
+                Console.WriteLine("Districts:");
+                foreach (var district in districts)
+                {
+                    Console.WriteLine($"- {district}");
+                }
             }
-            Console.WriteLine();
         }
     }
 }
