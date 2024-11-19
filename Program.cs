@@ -1,10 +1,14 @@
-﻿namespace ClassAppCS
+﻿using ClassAppCS.Entities;
+
+namespace ClassAppCS
 {
     internal class Program
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello, World!");
+            Person person = new Person();
+            person.Name = "John";
+            Console.WriteLine(person.Name);
         }
     }
 }
